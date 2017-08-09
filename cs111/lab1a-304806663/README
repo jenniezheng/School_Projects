@@ -1,0 +1,19 @@
+NAME: Yunjing Zheng
+EMAIL: jenniezheng321@gmail.com
+ID: 304806663
+
+
+lab0.c:
+Source code for the program. Program's basic function is to read in from stdin and write out to stdout. The --shell option tells
+the program to spawn a child program that creates an interactable bash shell. Comments give more info about this code.
+
+Makefile:
+The Makefile has three targets: default, clean, and dist. 
+	default builds the executable with -g
+	clean with remove everything except the orignal three files from the directory
+	dist creates a distribution containing the Makefile, C source code, and README
+
+
+README: 
+Overview of the various files in the folder and explanation of my lab1 experience. 
+

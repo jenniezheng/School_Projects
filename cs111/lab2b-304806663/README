@@ -1,0 +1,104 @@
+NAME: Yunjing Zheng
+EMAIL: jenniezheng321@gmail.com
+ID: 304806663
+
+===============================IMPORTANT NOTE==========================
+I decided to implement make clean so that it will NOT remove profile.out. 
+This is because the specs explained that make profile cannot be tested since
+each person could have installed google-prof at a different location within their
+home directory. Therefore, I should not call make profile within make dist, but
+I should still include profile.out within the created distribution. I decided the 
+simplest way to solve this inconsistancy is to not remove profile.out in the first place.
+
+===============================Questions===============================
+QUESTION 2.3.1 - Cycles in the basic list implementation:
+Where do you believe most of the cycles are spent in the 1 and 2-thread list tests?
+Why do you believe these to be the most expensive parts of the code?
+Where do you believe most of the time/cycles are being spent in the high-thread spin-lock tests?
+Where do you believe most of the time/cycles are being spent in the high-thread mutex tests?
+
+The list tests with very few threads spend most of their time actually performing the inserting, looking up, and deleting on the list elements. Since there's only 1 or 2 threads, they don't attempt to enter the critical section at the same time very often. This means that the lock mechanism only has to perform a little bit of work. On the other hand, the list tests with a large number of threads spend most of their time enforcing the lock mechanism. The spin-lock tests spend a lot of time spinning while waiting to hold the lock. The mutex tests spend a significant amount of time being put to sleep when they can't get the lock and then waking up when the lock opens up. 
+
+QUESTION 2.3.2 - Execution Profiling:
+
+Where (what lines of code) are consuming most of the cycles when the spin-lock version of the list exerciser is run with a large number of threads?
+Why does this operation become so expensive with large numbers of threads? 
+
+The lock function is consuming around 99% of the cycles when the spin lock is running with twelve threads. The specific line that takes almost all of the time in the lock function is while(__sync_lock_test_and_set(&SPIN_LOCK, 1)); loop. This loop is expensive because it asks the threads to continue spinning until the lock frees up or it uses up its entire time slice. This means that the thread does nothing productive but continues to take up CPU time. The problem is the worst in the case where when the thread which is holding the lock is not even scheduled to run until other threads which don't hold the lock waste their time slice spinning. These threads must keep spinning until they use up their time slice and the thread which actually the lock is scheduled again. Clearly in cases where threads can expect to wait a long time before obtaining the lock, spin-locks are inefficient.
+
+QUESTION 2.3.3 - Mutex Wait Time:
+Look at the average time per operation (vs # threads) and the average wait-for-mutex time (vs #threads).
+
+Why does the average lock-wait time rise so dramatically with the number of contending threads?
+Why does the completion time per operation rise (less dramatically) with the number of contending threads?
+How is it possible for the wait time per operation to go up faster (or higher) than the completion time per operation?
+
+Since only one thread may hold the lock at once, the more threads there are, the longer each thread must wait for the lock. A thread must wait for a large proportion of the other threads to obtain the lock, perform their operation, and release the lock because that thread can obtain the lock. Thus average lock-wait time rises very quickly. However, while operation time also rises, it doesn't rise as fast because even when the number of threads is large, one thread is still obtaining the lock and performing an operation at any given time. In that sense, work still gets done even though a lot of the workers are just sleeping. 
+For just one thread, the average wait time is indeed less than the average operation time. The wait time is a part of the operation time. However, for larger numbers of threads, average wait time is exponentially greater than average operation time. This is because wait time is based on how long each thread must wait while operation time is based on how long the entire program takes. In this sense wait time is similar to thread time, while operation time is similar to real time. That's why when there are multiple threads, wait time can be higher than real time.
+
+QUESTION 2.3.4 - Performance of Partitioned Lists
+Explain the change in performance of the synchronized methods as a function of the number of lists.
+Should the throughput continue increasing as the number of lists is further increased? If not, explain why not.
+It seems reasonable to suggest the throughput of an N-way partitioned list should be equivalent to the throughput of a single list with fewer (1/N) threads. Does this appear to be true in the above curves? If not, explain why not.
+
+The Spin-Lock synchronization graph and the Mutex synchronization graph have nearly the same curves. The trends for different numbers of lists are the same. Both the 1 list test and the 16 test decrease in throughput over time. However, the 16 list test decreases significantly slower than the 1 list test. When there's only one thread, the 16 list test is only about 8 times higher in throughput than the 1 list test, but once there are about 16 threads the 16 list test is almost 100 times higher in throughput. 
+However, the throughput will not continue to increase to infinity as the number of lists keeps increasing. Increased numbers of lists will allow threads to run into each other less and allow the lists to be shorter, but once the list number is high enough that lists are basically non-overloaded hash buckets, increasing the number of lists brings no gain in throughput.
+Furthermore, if the number of lists is too high, the program must ask for a large amount of memory. This memory won't be able to fit entirely into the lower level caches. Thus at a certain point, increasing the number of lists will actually slow the program down.
+Yes, there does seem to be a trend that X lists with X threads has approximately throughput as high as 1 list with 1/X threads. For example, according to  graph 5, 1 list with 1 thread has a throughput slightly below 1E6 operations per second. That's about the same as the throughput of 16 lists with 16 threads, or 4 lists with 4 threads. Furthermore, the throughput of 1 list with 4 threads is about the same as the throughput of 4 lists with 16 threads.
+
+
+===============================CONTENTS===============================
+Source Code:
+	SortedList.h ... declares the SortedList and functions 
+	SortedList.c ... defines the SortedList functions
+	lab2_list.c ... main source code for the lab2_list program
+	utilities.h ... declares various general functions
+	utilities.c ... defines various general functions
+Program Output:
+	lab2b_1.csv ... output for test 1
+	lab2b_2.csv ... output for test 2
+	lab2b_3.csv ... output for test 3
+	lab2b_4.csv ... output for test 4
+	lab2b_5.csv ... output for test 5
+	lab2_list.csv ... all output from list tests
+Graphing file:
+	lab2_list.gp ... uses output from add tests to create lab2b_{1..5}.png
+Graphs:
+	lab2b_1.png ... throughput vs number of threads for mutex and spin-lock synchronized list operations.
+	lab2b_2.png ... mean time per mutex wait and mean time per operation for mutex-synchronized list perations.
+	lab2b_3.png ... successful iterations vs threads for each synchronization method.
+	lab2b_4.png ... throughput vs number of threads for mutex synchronized partitioned lists
+	lab2b_5.png ... throughput vs number of threads for spin-lock synchronized partitioned lists
+Google-prof Output:
+	profile.out ... describes where the CPU spends the most time for spin-lock synchronized lists
+Other: 
+	Makefile ... file to assist with the building, cleaning, testing, and distributing of the lab
+	README ... Answers questions and gives a brief overview of the lab
+
+
+===============================ADDITIONAL INFO===============================
+
+Makefile:
+	The makefile has the following targets.
+	default: builds lab2_list
+	clean: rid the directory of everything except the source files, README, lab2_list.gp, and profile.out. 
+	dist: creates a tar distribution of the files needed for submission
+	tests: runs the tests 1 to 5 and places the standard output from the tests into the files 
+		lab2b_{1..5}.csv and lab2b_list.csv
+	graphs: uses the lab2b_{1..5}.csv files to generate the five graphs
+	profile: runs google-prof on lab2_list and places output in profile.out
+
+Sortedlist:
+	The SortedList element is composed of a key which is a random string and a pointer
+	to the previous and the next element. The SortedList is implemented as a 
+	circular doubly linked list with a dummy node. The SortedList supports four
+	functions: insert to place the element in ascending order within the list, delete
+	to remove the element from the list, lookup to find the correct element based
+	on a key, and length to count the number of elements in the list. Threads
+	can yield within any of these four elements using the yield argument. 
+
+lab2_list:
+	This program creates numerous threads. Each thread inserts a random element in ascending order into a sorted list, looks up the element from the sorted list, and then deletes that element from the list. If these operations are successful (meaning either the critical sections were protected or the threads, by chance, didn't run into each other in the critical sections), the program outputs the total time and time per operation the threads took. Essentially, the program allows the user to test the accuracy and efficiency of parallelism when multiple threads manipulate the same linked list. Program arguments allow the user to define how many threads and iterations to run, whether the threads should yield while within the insert, lookup, length, or delete function, and whether the critical section should be protected using nothing, spin locks, or mutexes. An additional program argument allows the user to define how many lists to create. Each element is assigned a specific list based on its hash function. This cuts down the sizes of the lists and also the extent which threads run into each other.
+
+profile.out:
+	This uses google-prof to analyze where the CPU spends the most time for spin-lock synchronized lists. The results are that the CPU spends the majority of its time in the lock function. In particular, it is in the "while(__sync_lock_test_and_set(SPIN_LOCK+num, 1))" loop for almost 99% of the samples. 

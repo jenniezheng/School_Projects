@@ -1,0 +1,95 @@
+NAME: Yunjing Zheng
+EMAIL: jenniezheng321@gmail.com
+ID: 304806663
+
+===============================Questions===============================
+QUESTION 2.1.1 - causing conflicts:
+Why does it take many iterations before errors are seen?
+Why does a significantly smaller number of iterations so seldom fail?
+    There are only a few critical sections and the chance of two threads running into each other at the critical sections when each performing just one operation is very low. It's only when the number of iterations is high, so that the total number of operations is high, is the total chance of error high. 
+	When there's only a small number of iterations, it's possible that each thread will finish modifying the counter before the next thread starts modifying the counter. TThus threads won't run into each other. 
+
+QUESTION 2.1.2 - cost of yielding:
+Why are the --yield runs so much slower?
+Where is the additional time going?
+Is it possible to get valid per-operation timings if we are using the --yield option?
+If so, explain how. If not, explain why not. 
+	Yield runs are much slower because it asks the CPU to switch to a different process or a different thread, which results in increased overhead. The addition time is going into context switching. This includes the time it takes to save the thread's registers and load a new thread or process. Furthermore, if a new process is loaded, that process may clear the cache of the current add/list process's data, and next time the add/list process is run again it will take more time for the process to get this data. You cannot obtain valid per-operation timings when using the --yield operation because a lot of the real time is spent on overhead in the kernal and on other processes rather than on this process. 
+
+QUESTION 2.1.3 - measurement errors:
+Why does the average cost per operation drop with increasing iterations? If the cost per iteration is a function of the number of iterations, how do we know how many iterations to run (or what the "correct" cost is)?
+	The first few times the operation is run, the program takes time to create the thread and load thread data into the cache. Thus the cost for one operation is very high, at about 100000 ns. After all the needed data is already in the cache, the program can run very quickly. For example, the cost per operation for 10 operations is only about 10000 ns, which means the total time for 1 operation is nearly the same as for 10 operations. The 9 additional operations cost almost no time compared to the time it took to create the thread and start the thread's function. For ten thousand operations, the cost per operation drops to around 20 ns per operation. This means that the program took twice as long to perform 100000 operations than it took to perform 1 operation. Clearly the operations themselves are very fast once the thread is created. 
+	The correct cost is technically the cost per operations when running infinite operations. In the case of infinite operations, the time it takes to create the thread is insignificant compared to the time it takes to change the counter, so only the counter changing time matters. 
+
+QUESTION 2.1.4 - costs of serialization:
+Why do all of the options perform similarly for low numbers of threads?
+Why do the three protected operations slow down as the number of threads rises?
+	For just one thread, it is impossible for the threads to run into each other at the critical section. The thread can always grab the mutex/spinlock or call the compare function, and proceed. However, as the number of threads increase, the threads end up stopping at the critical section more and more often. Thus the threads spend a lot of time waiting on each other and figuring out the correct order they should act in. The locking mechanism must work a lot harder. This drastically slows the program down.
+
+QUESTION 2.2.1 - scalability of Mutex
+Compare the variation in time per mutex-protected operation vs the number of threads in Part-1 (adds) and Part-2 (sorted lists).
+Comment on the general shapes of the curves, and explain why they have this shape.
+Comment on the relative rates of increase and differences in the shapes of the curves, and offer an explanation for these differences. 
+	In both parts, the adjusted time per mutex-protected operation starts very low for just one thread but increases as the number of threads increases. In part 1, the time seems to increase more and more slowly, until it stabalizes at around 100 ns per operation for 32 threads. In part 2, the time steadily climbs but also stops at around 100 ns for 30 threads. The list graph resembles an exponential function while the add graph resembles a square root function. The add program scales better with an increasing number of threads because its critcal section is relatively small. All a thread much do within a critical section is switch one value for another value. The list program scales a lot worse because its critical section is much larger since all of the SortedList functions have multiple instructions within their critical sections. This means the probability that the threads must block each other is much higher. Parallism doesn't help to speed up the program in either part 1 or part 2, but parallelism works worse in part 2. 
+
+QUESTION 2.2.2 - scalability of spin locks
+Compare the variation in time per protected operation vs the number of threads for list operations protected by Mutex vs Spin locks. Comment on the general shapes of the curves, and explain why they have this shape.
+Comment on the relative rates of increase and differences in the shapes of the curves, and offer an explanation for these differences. 
+	In both part 1 and part 2, adjusted time the per spin-lock-protected operation starts very low for just one thread but increases exponentially the number of threads increases. In both parts, the time per operation continues growing, and reaches around 1000 ns per operation for 32 threads. In both cases, the graphed lines is linear, which means that the time per operation is exponential. Thus the spin-lock-protected operation is exponentially slower than the mutex-protected operation in both part 1 and part 2. Spin locks are significantly slower than mutexes because threads which cannot grab a spin lock will continuously stay in a while loop until it grabs one or uses up all its alloted time on the CPU. On the other hand, threads which cannot grab a mutex will go to sleep and allow the operating system to schedule other nonsleeping threads to run. Those threads will finish using the lock and then wake up the threads which needed the lock. The mutex method is much more efficient than the spin lock method when the thread which doesn't have the lock doesn't expect to obtain it anytime soon.
+
+===============================CONTENTS===============================
+
+Source Code:
+	lab2_add.c ... main source code for the add program
+	SortedList.h ... declares the SortedList and functions 
+	SortedList.c ... defines the SortedList functions
+	lab2_list.c ... main source code for the list program
+	utilities.h ... declares numerous functions used by both the add and list programs
+	utilities.c ... defines functions used by both the add and list programs
+Program Output:
+	lab2_add.csv ... output from add tests
+	lab2_list.csv ... output from list tests
+Graphing files:
+	lab2_add.gp ... uses output from add tests to create lab2_add-{1..5}.png
+	lab2_list.gp ... uses output from add tests to create lab2_list-{1..4}.png
+Graphs:
+	lab2_add-1.png ... threads and iterations that run (unprotected) w/o failure
+	lab2_add-2.png ... cost per operation of yielding
+	lab2_add-3.png ... cost per operation vs number of iterations
+	lab2_add-4.png ... threads and iterations that run (protected) w/o failure
+	lab2_add-5.png ... cost per operation vs number of threads
+	lab2_list-1.png ... cost per operation vs threads and iterations
+	lab2_list-2.png ... threads and iterations that run (un-protected) w/o failure
+	lab2_list-3.png ... threads and iterations that run (protected) w/o failure
+	lab2_list-4.png ... cost per operation vs number of threads
+Other: 
+	Makefile ... file to assist with the building, cleaning, testing, and distributing of the lab
+	README ... Answers questions and gives a brief overview of lab2a
+
+===============================ADDITIONAL INFO===============================
+
+Makefile:
+	The makefile has the following targets.
+	default: builds lab2_add and lab2_list
+	lab2_add: builds lab2_add with flags -pthread for POSIX threads and -Wall for warnings
+	lab2_list: builds lab2_list with flags -pthread for POSIX threads and -Wall for warnings
+	clean: rid the directory of everything except the original files from the tar distribution
+	dist: creates a tar distribution of the files needed for submission
+	tests: runs the necessary tests and places the standard output from the tests into the files 
+		lab2_add.csv and lab2_list.csv 
+	graphs: uses the lab2_add.gp and lab2_list.gp to generate the nine graphs 
+
+lab2_add:
+	This program creates numerous threads that all add one to a global counter and then subtracts one from the counter. Then the program outputs the ending value of the counter, the total time elapsed, and time per operation. Essentially, the program allows the user to test the accuracy and efficiency of parallelism when multiple threads manipulate the same global integer. Program arguments allow the user to define how many threads and iterations to run, whether the threads should yield while within the critical section, and whether the critical section should be protected using nothing, spin locks, mutexes, or compare and swap function.
+
+Sortedlist:
+	The SortedList element is composed of a key which is a random string and a pointer
+	to the previous and the next element. The SortedList is implemented as a 
+	circular doubly linked list with a dummy node. The SortedList supports four
+	functions: insert to place the element in ascending order within the list, delete
+	to remove the element from the list, lookup to find the correct element based
+	on a key, and length to count the number of elements in the list. Threads
+	can yield within any of these four elements using the yield argument. 
+
+lab2_list:
+	This program creates numerous threads. Each thread inserts a random element in ascending order into a sorted list, looks up the element from the sorted list, and then deletes that element from the list. If these operations are successful (meaning either the critical sections were protected or the threads, by chance, didn't run into each other in the critical sections), the program outputs the total time and time per operation the threads took. Essentially, the program allows the user to test the accuracy and efficiency of parallelism when multiple threads manipulate the same linked list. Program arguments allow the user to define how many threads and iterations to run, whether the threads should yield while within the insert, lookup, length, or delete function, and whether the critical section should be protected using nothing, spin locks, or mutexes.
