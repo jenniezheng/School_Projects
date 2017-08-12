@@ -1,0 +1,766 @@
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+19:25:49 
+Testing...
+The temperature is 24.80 degree Celcius
+Gpio is 0
+19:25:50 
+Testing...
+The temperature is 24.47 degree Celcius
+Gpio is 0
+19:25:51 
+Testing...
+The temperature is 17.26 degree Celcius
+Gpio is 0
+19:26:30 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:26:31 
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+19:26:32 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+19:26:37 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:26:38 
+Testing...
+The temperature is 24.07 degree Celcius
+Gpio is 0
+19:26:39 
+Testing...
+The temperature is 17.02 degree Celcius
+Gpio is 0
+19:28:22 
+Testing...
+The temperature is 24.47 degree Celcius
+Gpio is 0
+19:28:23 
+Testing...
+The temperature is 17.58 degree Celcius
+Gpio is 0
+19:29:34 
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+19:29:35 
+Testing...
+The temperature is 24.39 degree Celcius
+Gpio is 0
+19:29:36 
+Testing...
+The temperature is 24.80 degree Celcius
+Gpio is 0
+19:30:5 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+19:30:6 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:30:7 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+19:30:8 
+Testing...
+The temperature is 24.23 degree Celcius
+Gpio is 0
+19:30:9 
+Testing...
+The temperature is 24.47 degree Celcius
+Gpio is 0
+19:30:10 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:30:11 
+Testing...
+The temperature is 17.50 degree Celcius
+Gpio is 0
+19:38:57 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:38:58 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+19:38:59 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:39:0 
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+19:39:1 
+Testing...
+The temperature is 17.34 degree Celcius
+Gpio is 0
+19:39:57 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+19:39:58 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+19:39:59 
+Testing...
+The temperature is 24.47 degree Celcius
+Gpio is 0
+19:40:0 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:40:1 
+Testing...
+The temperature is 24.80 degree Celcius
+Gpio is 0
+19:40:2 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+19:40:3 
+Testing...
+The temperature is 24.07 degree Celcius
+Gpio is 0
+19:40:4 
+Testing...
+The temperature is 17.66 degree Celcius
+Gpio is 0
+19:41:46 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+19:41:47 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+19:41:48 
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+19:41:49 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+19:41:50 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:41:51 
+Testing...
+The temperature is 24.47 degree Celcius
+Gpio is 0
+19:41:52 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+19:41:53 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+19:41:54 
+Testing...
+The temperature is 24.80 degree Celcius
+Gpio is 0
+19:41:55 
+Testing...
+The temperature is 24.80 degree Celcius
+Gpio is 0
+19:41:56 
+Testing...
+The temperature is 24.31 degree Celcius
+Gpio is 0
+19:41:57 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+19:41:58 
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+19:42:1 
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+19:42:2 
+Testing...
+The temperature is 24.47 degree Celcius
+Gpio is 0
+19:42:3 
+Testing...
+The temperature is 17.98 degree Celcius
+Gpio is 0
+19:46:8 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+19:46:9 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+19:46:10 
+Testing...
+The temperature is 25.28 degree Celcius
+Gpio is 0
+19:46:11 
+Testing...
+The temperature is 25.37 degree Celcius
+Gpio is 0
+19:46:20 
+Testing...
+The temperature is 25.28 degree Celcius
+Gpio is 0
+19:46:21 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+19:46:22 
+Testing...
+The temperature is 25.28 degree Celcius
+Gpio is 0
+19:46:23 
+Testing...
+The temperature is 24.31 degree Celcius
+Gpio is 0
+19:46:24 
+Testing...
+The temperature is 17.58 degree Celcius
+Gpio is 0
+19:47:16 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+19:47:17 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+19:47:18 
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+19:47:19 
+Testing...
+The temperature is 24.80 degree Celcius
+Gpio is 0
+19:47:27 
+Testing...
+The temperature is 24.47 degree Celcius
+Gpio is 0
+19:47:28 
+Testing...
+The temperature is 17.42 degree Celcius
+Gpio is 0
+19:48:17 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+19:48:18 
+Testing...
+The temperature is 24.23 degree Celcius
+Gpio is 0
+19:48:25 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+19:48:26 
+Testing...
+The temperature is 25.28 degree Celcius
+Gpio is 0
+19:48:27 
+Testing...
+The temperature is 24.31 degree Celcius
+Gpio is 0
+19:48:28 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+19:48:29 
+Testing...
+The temperature is 17.90 degree Celcius
+Gpio is 0
+19:49:5 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+19:49:6 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+19:49:7 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+19:49:8 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+19:49:9 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+19:49:10 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+19:49:11 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:49:12 
+Testing...
+The temperature is 24.15 degree Celcius
+Gpio is 0
+19:49:13 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+19:49:14 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+19:49:15 
+Testing...
+The temperature is 17.42 degree Celcius
+Gpio is 0
+19:54:53 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:54:54 
+Testing...
+The temperature is 24.23 degree Celcius
+Gpio is 0
+19:54:55 
+Testing...
+The temperature is 17.26 degree Celcius
+Gpio is 0
+19:55:58 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+19:55:59 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+19:56:0 
+Testing...
+The temperature is 24.23 degree Celcius
+Gpio is 0
+19:56:7 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+19:56:8 
+Testing...
+The temperature is 24.80 degree Celcius
+Gpio is 0
+19:56:9 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+19:56:10 
+Testing...
+The temperature is 24.31 degree Celcius
+Gpio is 0
+19:56:11 
+Testing...
+The temperature is 24.80 degree Celcius
+Gpio is 0
+19:56:12 
+Testing...
+The temperature is 17.34 degree Celcius
+Gpio is 0
+19:56:57 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+19:56:58 
+Testing...
+The temperature is 17.98 degree Celcius
+Gpio is 0
+20:1:57 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:1:58 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+20:1:59 
+Testing...
+The temperature is 24.39 degree Celcius
+Gpio is 0
+20:2:0 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+20:2:1 
+Testing...
+The temperature is 24.39 degree Celcius
+Gpio is 0
+20:2:2 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+20:2:3 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+20:2:4 
+Testing...
+The temperature is 24.31 degree Celcius
+Gpio is 0
+20:2:5 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+20:2:6 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+20:2:7 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:2:8 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+20:2:9 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+20:2:10 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+20:2:11 
+Testing...
+The temperature is 24.39 degree Celcius
+Gpio is 0
+20:2:12 
+Testing...
+The temperature is 24.31 degree Celcius
+Gpio is 0
+20:2:13 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+20:2:14 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:2:15 
+Testing...
+The temperature is 24.39 degree Celcius
+Gpio is 0
+20:2:16 
+Testing...
+The temperature is 17.66 degree Celcius
+Gpio is 0
+20:2:53 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+20:2:54 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+20:2:55 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+20:2:56 
+Testing...
+The temperature is 24.39 degree Celcius
+Gpio is 0
+20:2:57 
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+20:2:58 
+Testing...
+The temperature is 24.80 degree Celcius
+Gpio is 0
+20:2:59 
+Testing...
+The temperature is 24.31 degree Celcius
+Gpio is 0
+20:3:0 
+Testing...
+The temperature is 24.72 degree Celcius
+Gpio is 0
+20:3:1 
+Testing...
+The temperature is 24.39 degree Celcius
+Gpio is 0
+20:3:2 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+20:3:3 
+Testing...
+The temperature is 24.31 degree Celcius
+Gpio is 0
+20:3:4 
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+20:3:5 
+Testing...
+The temperature is 24.07 degree Celcius
+Gpio is 0
+20:3:6 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+20:3:7 
+Testing...
+The temperature is 24.07 degree Celcius
+Gpio is 0
+20:3:8 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+20:3:9 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+20:3:10 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:3:11 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+20:3:12 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:3:13 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+20:3:14 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:3:15 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+20:3:16 
+Testing...
+The temperature is 24.88 degree Celcius
+Gpio is 0
+20:3:17 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:3:18 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:3:19 
+Testing...
+The temperature is 24.39 degree Celcius
+Gpio is 0
+20:3:20 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+20:3:21 
+Testing...
+The temperature is 17.82 degree Celcius
+Gpio is 0
+20:4:4 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:4:5 
+Testing...
+The temperature is 24.39 degree Celcius
+Gpio is 0
+20:4:6 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:4:7 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+20:4:8 
+Testing...
+The temperature is 24.31 degree Celcius
+Gpio is 0
+20:4:9 
+Testing...
+The temperature is 24.39 degree Celcius
+Gpio is 0
+20:4:10 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:4:11 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+20:4:12 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:4:13 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+20:4:14 
+Testing...
+The temperature is 24.63 degree Celcius
+Gpio is 0
+20:4:15 
+Testing...
+The temperature is 24.55 degree Celcius
+Gpio is 0
+20:4:16 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+20:4:17 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+20:4:18 
+Testing...
+The temperature is 25.20 degree Celcius
+Gpio is 0
+20:4:19 
+Testing...
+The temperature is 24.15 degree Celcius
+Gpio is 0
+20:4:20 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+20:4:28 
+Testing...
+The temperature is 25.20 degree Celcius
+Gpio is 0
+20:4:29 
+Testing...
+The temperature is 24.96 degree Celcius
+Gpio is 0
+20:4:30 
+Testing...
+The temperature is 25.04 degree Celcius
+Gpio is 0
+20:4:31 
+Testing...
+The temperature is 25.12 degree Celcius
+Gpio is 0
+20:4:32 
+Testing...
+The temperature is 17.10 degree Celcius
+Gpio is 0
+20:7:49 
+Testing...
+The temperature is 23.99 degree Celcius
+Gpio is 0
+20:7:50 
+Testing...
+The temperature is 23.58 degree Celcius
+Gpio is 0
+20:7:51 
+Testing...
+The temperature is 23.66 degree Celcius
+Gpio is 0
+20:7:52 
+Testing...
+The temperature is 23.26 degree Celcius
+Gpio is 0
+20:7:53 
+Testing...
+The temperature is 23.99 degree Celcius
+Gpio is 0
+20:7:54 
+Testing...
+The temperature is 15.98 degree Celcius
+Gpio is 0
+20:10:36 
+Testing...
+The temperature is 23.26 degree Celcius
+Gpio is 0
+20:10:37 
+Testing...
+The temperature is 22.86 degree Celcius
+Gpio is 0
+20:10:38 
+Testing...
+The temperature is 22.86 degree Celcius
+Gpio is 0
+20:10:39 
+Testing...
+The temperature is 22.54 degree Celcius
+Gpio is 0
+20:10:40 
+Testing...
+The temperature is 22.62 degree Celcius
+Gpio is 0
+20:10:41 
+Testing...
+The temperature is 23.26 degree Celcius
+Gpio is 0
+20:10:42 
+Testing...
+The temperature is 22.78 degree Celcius
+Gpio is 0
+20:10:43 
+Testing...
+The temperature is 22.54 degree Celcius
+Gpio is 0
+20:10:44 
+Testing...
+The temperature is 22.86 degree Celcius
+Gpio is 0
+20:10:45 
+Testing...
+The temperature is 23.10 degree Celcius
+Gpio is 0
+20:10:46 
+Testing...
+The temperature is 22.54 degree Celcius
+Gpio is 0
+20:10:47 
+Testing...
+The temperature is 22.86 degree Celcius
+Gpio is 0
+20:10:48 
+Testing...
+The temperature is 22.70 degree Celcius
+Gpio is 0
+20:10:49 
+Testing...
+The temperature is 22.70 degree Celcius
+Gpio is 0
+20:10:50 
+Testing...
+The temperature is 23.10 degree Celcius
+Gpio is 0
+20:10:51 
+OFF
+20:16:29 SHUTDOWN
+OFF
+20:16:35 SHUTDOWN
+OFF
+20:19:59 SHUTDOWN
