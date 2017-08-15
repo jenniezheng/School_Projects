@@ -22,9 +22,15 @@ clean:
 dist:
 	tar -czf $(DIST) $(DIST_FILES)
 
+#other stuff
 mount:
-	mkdir fs
+	-mkdir fs
 	sudo mount -o ro,loop img/EXT2_test.img fs
+
+
+mount2:
+	mkdir fs
+	sudo mount -o rw,loop img/EXTEdited.img fs
 
 unmount:
 	sudo umount fs
@@ -37,15 +43,25 @@ debugfs:
 view:
 	xxd img/EXT2_test.img | head -20
 
-check:
+check1: 
 	gcc -o lab3a lab3a.c -g -lm
 	./lab3a img/trivial.img 
 
 diff:
 	gcc -o lab3a lab3a.c -g -lm
 	./lab3a img/trivial.img > csv/trivial_check.csv
-	diff -u csv/trivial_check.csv csv/trivial.csv
+	diff csv/trivial_check.csv csv/trivial.csv
 
 check2:
 	gcc -o lab3a lab3a.c -g -lm
 	./lab3a img/otherimage.img > csv/otherimage_check.csv
+
+diff2:
+	gcc -o lab3a lab3a.c -g -lm
+	./lab3a img/trivialV2.img > csv/trivial_check.csv
+	diff csv/trivial_check.csv csv/trivial.csv
+
+push:
+	git add *
+	git commit -am "update"
+	git push origin master

@@ -29,8 +29,8 @@ mount:
 
 
 mount2:
-	mkdir fs
-	sudo mount -o rw,loop img/EXTEdited.img fs
+	-mkdir fs
+	sudo mount -o rw,loop img/lite.img fs
 
 unmount:
 	sudo umount fs
@@ -47,16 +47,31 @@ check1:
 	gcc -o lab3a lab3a.c -g -lm
 	./lab3a img/trivial.img 
 
-diff:
-	gcc -o lab3a lab3a.c -g -lm
-	./lab3a img/trivial.img > csv/trivial_check.csv
-	diff csv/trivial_check.csv csv/trivial.csv
-
+	
 check2:
 	gcc -o lab3a lab3a.c -g -lm
 	./lab3a img/otherimage.img > csv/otherimage_check.csv
 
+
+diff:
+	gcc -o lab3a lab3a.c -g -lm
+	./lab3a img/trivial.img > csv/trivial_check.csv
+	diff csv/trivial_check.csv csv/trivial.csv
 diff2:
 	gcc -o lab3a lab3a.c -g -lm
 	./lab3a img/trivialV2.img > csv/trivial_check.csv
 	diff csv/trivial_check.csv csv/trivial.csv
+
+
+
+push:
+	git add *
+	git commit -am "update"
+	git push origin master
+
+tt: 
+	make mount2
+	sudo touch fs/apple.txt
+	make unmount
+	./lab3a img/EXTEdited.img >view
+	subl view

@@ -303,7 +303,7 @@ void recurse_through_indirects(int block_number, int indirection_level, int pare
 		block_directory_entry_print(block_number, parent_inode_number);
 	}
 	else{
-		unsigned long num_blocks = block_size / 4;  //confirm 4?
+		unsigned long num_blocks = block_size / 4; 
 		unsigned int* block_pointers = malloc(block_size);
 		
 		if (pread(file_system_image_fd, block_pointers, block_size, block_number * block_size) == -1) {
@@ -334,6 +334,7 @@ void recurse_through_indirects(int block_number, int indirection_level, int pare
 			//continue to lower indirection level
 			recurse_through_indirects(block_pointers[block_index],indirection_level-1,parent_inode_number,directory,total_offset);
 		}
+		free(block_pointers);
 	}
 }
 

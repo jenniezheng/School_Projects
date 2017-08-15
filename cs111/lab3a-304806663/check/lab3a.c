@@ -16,13 +16,21 @@
 #include "ext2_fs.h"
 
 /*
-	check: order?
-	is it for each group:
-		group summer, bfree, ifree, directs...
-	or:
-		all groups, all bfrees, all ifrees...
+	todo: 
 
-	where to find last inode modification time?
+		README
+
+		TA office hours
+
+			wtf test script??
+
+			where to find last inode modification time?
+
+		run additional tests
+
+	optional:
+
+		check for malloc fails and print error if malloc failed...
 */
 
 int file_system_image_fd;
@@ -42,7 +50,7 @@ void block_directory_entry_print(int block_number, int inode_number);
 void single_inode_print(struct ext2_inode inode, unsigned inode_number);
 void group_inode_bitmap_print(int group_num);
 void group_block_bitmap_print(int group_num);
-char file_type_to_char(unsigned file_type);
+char file_type_to_char(uint16_t file_type);
 void inode_info_print(int group_num);
 void recurse_through_indirects(int block_number, int indirection_level, int parent_inode_number, int directory, unsigned long long logical_block_general_offset);
 
@@ -70,11 +78,12 @@ char* time_to_string(unsigned raw){
     return buffer; 
 }
 
-char file_type_to_char(unsigned raw_type){
+char file_type_to_char(uint16_t raw_type){
 	char file_type;
-	if(raw_type&0x8000) file_type='f';
-	else if(raw_type&0x4000) file_type='d';
-	else if (raw_type&0xA000) file_type='s';
+
+	if ((raw_type & 0xA000) == 0xA000 ) file_type='s';
+	else if(raw_type& 0x8000) file_type='f';
+	else if(raw_type & 0x4000) file_type='d';
 	else file_type='?';
 	return file_type;
 }
@@ -325,6 +334,7 @@ void recurse_through_indirects(int block_number, int indirection_level, int pare
 			//continue to lower indirection level
 			recurse_through_indirects(block_pointers[block_index],indirection_level-1,parent_inode_number,directory,total_offset);
 		}
+		free(block_pointers);
 	}
 }
 
