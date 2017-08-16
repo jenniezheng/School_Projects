@@ -10,7 +10,7 @@ DIST=lab3a-304806663.tar.gz
 default: build
 
 build: lab3a.c 
-	gcc -o lab3a lab3a.c -g -lm
+	gcc -o lab3a lab3a.c -g -lm -Wall
 
 clean:
 	mkdir -p /tmp/tempBackup.$(ID)

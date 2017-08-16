@@ -182,7 +182,6 @@ void single_inode_print(struct ext2_inode inode, unsigned inode_number){
 
 void single_group_print(int group_num){
 	struct ext2_group_desc group_desc=group_descs[group_num];
-	const int block_group_offset=2048; 
 	unsigned int total_blocks_in_group;
 	unsigned int total_inodes_in_group;
 
@@ -281,7 +280,6 @@ void group_inode_info_print(int group_num){
 
 			//indirect pointer active
 			int directory= (inode_file_type=='d') ? 1 : 0;
-			int offset=0; 
 			int block_index;
 			for (block_index=0; block_index<12; block_index++){
 				recurse_through_indirects(inode.i_block[block_index],0,inode_number,directory,block_index); 
