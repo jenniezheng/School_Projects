@@ -165,7 +165,7 @@ void single_inode_print(struct ext2_inode inode, unsigned inode_number){
 		inode.i_uid,//owner (decimal)
 		inode.i_gid,//group (decimal)
 		inode.i_links_count,//link count (decimal)
-		mtime,//time of last I-node change (mm/dd/yy hh:mm:ss, GMT) //how to get this?
+		mtime,//time of last I-node change (ta said this was ok...)
 		mtime,//modification time (mm/dd/yy hh:mm:ss, GMT)
 		atime,//time of last access (mm/dd/yy hh:mm:ss, GMT)
 		inode.i_size,//file size (decimal)
@@ -175,14 +175,15 @@ void single_inode_print(struct ext2_inode inode, unsigned inode_number){
 	free(atime);
 
 	int address_index;
-	for(address_index=0; address_index<15; address_index++){
+	int num_blocks_to_print= (inode_file_type=='s') ? ceil( (double)inode.i_size/ block_size) : 15;
+	 
+	for(address_index=0; address_index<num_blocks_to_print; address_index++){
 		printf(",%u",inode.i_block[address_index]);
 	}
 }
 
 void single_group_print(int group_num){
 	struct ext2_group_desc group_desc=group_descs[group_num];
-	const int block_group_offset=2048; 
 	unsigned int total_blocks_in_group;
 	unsigned int total_inodes_in_group;
 
@@ -281,7 +282,6 @@ void group_inode_info_print(int group_num){
 
 			//indirect pointer active
 			int directory= (inode_file_type=='d') ? 1 : 0;
-			int offset=0; 
 			int block_index;
 			for (block_index=0; block_index<12; block_index++){
 				recurse_through_indirects(inode.i_block[block_index],0,inode_number,directory,block_index); 
@@ -303,14 +303,14 @@ void recurse_through_indirects(int block_number, int indirection_level, int pare
 		block_directory_entry_print(block_number, parent_inode_number);
 	}
 	else{
-		unsigned long num_blocks = block_size / 4;  //confirm 4?
+		unsigned long num_blocks = block_size / 4; 
 		unsigned int* block_pointers = malloc(block_size);
 		
 		if (pread(file_system_image_fd, block_pointers, block_size, block_number * block_size) == -1) {
 			fprintf(stderr,"Failed to read the allocated indirect block.\n"); exit(1);
 		}
 
-		int logical_block_offset_multiplier;
+		int logical_block_offset_multiplier; //(might want to check this)
 		if(indirection_level==1)logical_block_offset_multiplier=1;
 		else if (indirection_level==2)logical_block_offset_multiplier=block_size;
 		else if (indirection_level==3)logical_block_offset_multiplier=block_size*block_size;

@@ -1,6 +1,6 @@
-//NAME: Yunjing Zheng
-//EMAIL: jenniezheng321@gmail.com
-//ID: 304806663
+//NAME: Yunjing Zheng,Kunjan Patel
+//EMAIL: jenniezheng321@gmail.com,kunjan@ucla.edu
+//ID: 304806663,904563044
 
 
 #include <fcntl.h>
@@ -15,23 +15,7 @@
 
 #include "ext2_fs.h"
 
-/*
-	todo: 
 
-		README
-
-		TA office hours
-
-			wtf test script??
-
-			where to find last inode modification time?
-
-		run additional tests
-
-	optional:
-
-		check for malloc fails and print error if malloc failed...
-*/
 
 int file_system_image_fd;
 long unsigned num_groups;
@@ -165,7 +149,7 @@ void single_inode_print(struct ext2_inode inode, unsigned inode_number){
 		inode.i_uid,//owner (decimal)
 		inode.i_gid,//group (decimal)
 		inode.i_links_count,//link count (decimal)
-		mtime,//time of last I-node change (mm/dd/yy hh:mm:ss, GMT) //how to get this?
+		mtime,//time of last I-node change (ta said this was ok...)
 		mtime,//modification time (mm/dd/yy hh:mm:ss, GMT)
 		atime,//time of last access (mm/dd/yy hh:mm:ss, GMT)
 		inode.i_size,//file size (decimal)
@@ -175,7 +159,9 @@ void single_inode_print(struct ext2_inode inode, unsigned inode_number){
 	free(atime);
 
 	int address_index;
-	for(address_index=0; address_index<15; address_index++){
+	int num_blocks_to_print= (inode_file_type=='s') ? ceil( (double)inode.i_size/ block_size) : 15;
+	 
+	for(address_index=0; address_index<num_blocks_to_print; address_index++){
 		printf(",%u",inode.i_block[address_index]);
 	}
 }
@@ -190,8 +176,8 @@ void single_group_print(int group_num){
 		total_inodes_in_group=super_block.s_inodes_count - super_block.s_inodes_per_group * (num_groups-1);
 	}
 	else {
-		total_blocks_in_group=group_desc.bg_free_blocks_count; //number of free blocks (decimal)
-		total_inodes_in_group=group_desc.bg_free_inodes_count; //number of free i-nodes (decimal)
+		total_blocks_in_group=super_block.s_blocks_per_group; //number of blocks (decimal)
+		total_inodes_in_group=super_block.s_inodes_per_group; //number of free i-nodes (decimal)
 	}
 	//PRINTING GROUP
 	printf("\nGROUP,%u,%u,%u,%u,%u,%u,%u,%u",
@@ -213,7 +199,7 @@ void group_block_bitmap_print(int group_num){
 	if(group_num==num_groups-1) // if last group
 		total_blocks_in_group=super_block.s_blocks_count - super_block.s_blocks_per_group * (num_groups-1);
 	else 
-		total_blocks_in_group=group_desc.bg_free_blocks_count; //number of free blocks (decimal)
+		total_blocks_in_group=super_block.s_blocks_per_group; //number of blocks (decimal)
 	//PRINTING BFREE
 	char* block_bitmap=malloc(block_size);
 	if (pread(file_system_image_fd, block_bitmap, block_size, group_desc.bg_block_bitmap * block_size) == -1) {
@@ -237,7 +223,7 @@ void group_inode_bitmap_print(int group_num){
 	if(group_num==num_groups-1) // if last group
 		total_inodes_in_group=super_block.s_inodes_count - super_block.s_inodes_per_group * (num_groups-1);
 	
-	else total_inodes_in_group=group_desc.bg_free_inodes_count; //number of free i-nodes (decimal)
+	else total_inodes_in_group=super_block.s_inodes_per_group; //number of i-nodes (decimal)
 	
 	//PRINTING IFREE
 	unsigned char* inode_bitmap=malloc(block_size);
@@ -261,7 +247,7 @@ void group_inode_info_print(int group_num){
 	struct ext2_group_desc group_desc=group_descs[group_num];
 	unsigned int total_inodes_in_group;
 	if(group_num==num_groups-1) total_inodes_in_group=super_block.s_inodes_count - super_block.s_inodes_per_group * (num_groups-1);
-	else total_inodes_in_group=group_desc.bg_free_inodes_count; //number of free i-nodes (decimal)
+	else total_inodes_in_group=super_block.s_inodes_per_group; //number of i-nodes (decimal)
 	int inode_offset=group_num*super_block.s_inodes_per_group;
 	//print info about inodes
 	int i;
@@ -308,7 +294,7 @@ void recurse_through_indirects(int block_number, int indirection_level, int pare
 			fprintf(stderr,"Failed to read the allocated indirect block.\n"); exit(1);
 		}
 
-		int logical_block_offset_multiplier;
+		int logical_block_offset_multiplier; //(might want to check this)
 		if(indirection_level==1)logical_block_offset_multiplier=1;
 		else if (indirection_level==2)logical_block_offset_multiplier=block_size;
 		else if (indirection_level==3)logical_block_offset_multiplier=block_size*block_size;
