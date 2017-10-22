@@ -3,19 +3,18 @@
 //ID: 304806663
 
 //for running on my own computer
-#ifdef __amd64 
+#ifdef __amd64
 #define mraa_aio_context char*
 #define mraa_aio_read(X) 250+rand()%100
 #define mraa_aio_init(X) "No Init Needed"
 #define mraa_aio_close(TEMP_SENSOR) return
 #endif
 
-#ifndef __amd64 
+#ifndef __amd64
 #include <mraa/aio.h>
 #endif
 
 #include "connect.h"
-
 #include <getopt.h>
 #include <fcntl.h>
 #include <math.h>
@@ -25,7 +24,7 @@
 #include <sys/poll.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <time.h> 
+#include <time.h>
 #include <unistd.h>
 
 mraa_aio_context TEMP_SENSOR;
@@ -35,7 +34,7 @@ int PERIOD=1;
 int SCALE_FARENHEIT=1;//1 when farenheit, 0 when celcius
 int LOG=0;
 int STOP=0;//1 when stop, 0 when start
-int ID=918273645; //just a random number
+int ID=304806663;
 char* HOST="lever.cs.ucla.edu"; //default host
 int PORT_NUM; //required argument
 int SOCKET_FD;
@@ -57,7 +56,7 @@ void shut_down();
 
 /*REPORTING TEMP*/
 //obtains the temperature and reports it to stdout, as well as log if log is turned on
-void report(); 
+void report();
 //takes in a raw temp and returns it in either celcius or farenheit, depending on settings
 float convert_temp(int raw_value);
 //reads the temperature and returns its raw value
@@ -72,7 +71,7 @@ void process_lines(char* buff);
 /*TIME*/
 //returns the local time in format Hour:Min:Sec
 char* get_current_local_time();
-//if places tens place in first pos and ones in second. 
+//if places tens place in first pos and ones in second.
 void place_time_in_slot(char* slots, int time);
 
 /*PRINTING*/
@@ -102,7 +101,7 @@ void process_lines(char* buff){
 	      }
 	  }
       else{ //unfinished command
-      	int current_line_length=strlen(current_line); 
+      	int current_line_length=strlen(current_line);
       	if (current_line_length>=50){
       		fprintf(stderr, "Error! Command too long. Discarding command.");
       		buff[0]='\0'; // clear the buffer, discard command
@@ -134,7 +133,7 @@ void process_command(char* command){
 	if(DEBUG_FLAG) {
 		write(0,command,strlen(command));
 		write(0,"\n",1);
-	} 
+	}
 	if(strcmp(command,"OFF")==0) shut_down();
 	else if(strcmp(command,"SCALE=F")==0) SCALE_FARENHEIT=1;
 	else if (strcmp(command,"SCALE=C")==0) SCALE_FARENHEIT=0;
@@ -143,7 +142,7 @@ void process_command(char* command){
 	else if(strncmp(command, "PERIOD=",7)==0 && command[7]!=0){
 		PERIOD=atoi(command+7);
 	}
-	else fprintf(stderr,"Error: Unrecognized command %s!\n", command);	
+	else fprintf(stderr,"Error: Unrecognized command %s!\n", command);
 }
 
 
@@ -182,8 +181,8 @@ char* get_current_local_time(){
 	current_time = time(NULL);
 	//convert that into local time
 	local_time = localtime (&current_time);
-	int hour = local_time -> tm_hour; 
-	int min = local_time -> tm_min; 
+	int hour = local_time -> tm_hour;
+	int min = local_time -> tm_min;
 	int sec = local_time -> tm_sec;
 	char* slots=malloc(sizeof(char)*9);
 	place_time_in_slot(slots,hour);
@@ -201,7 +200,7 @@ float convert_temp(int raw_temp_value){
 	const float R0 = 100000.0;            // R0 = 100k
 	float R = 1023.0/(float)raw_temp_value-1.0;
 	R = R0*R;
-	float temperature = 1.0/(log(R/R0)/B+1/298.15)-273.15; 
+	float temperature = 1.0/(log(R/R0)/B+1/298.15)-273.15;
 	return temperature;
 }
 
@@ -252,7 +251,7 @@ void process_args(int argc, char **argv){
 	//process optional arguments
 	static struct option long_options_list[] =
 	{
-		{"id", required_argument, 0, 'i'}, 
+		{"id", required_argument, 0, 'i'},
 		{"host", required_argument, 0, 'h'},
 		{"log", required_argument, 0, 'l'},
 		{"debug", no_argument, 0, 'd'},
@@ -266,13 +265,13 @@ void process_args(int argc, char **argv){
 		num_optional_args++;
 		switch (c)
 		{
-			case 'i': 
+			case 'i':
 				ID=atoi(optarg);
 			break;
-			case 'h': 
+			case 'h':
 				HOST=optarg;
 			break;
-			case 'l': 
+			case 'l':
 				if(DEBUG_FLAG) printf("logfile is %s\n",optarg);
 				LOG_FD=open(optarg, O_CREAT|O_APPEND|O_WRONLY, 0666);
 				LOG=1;
@@ -285,7 +284,7 @@ void process_args(int argc, char **argv){
 				print_usage();
 				close_and_exit_program(1);
 			default:
-		        // should never get here. 
+		        // should never get here.
 				close_and_exit_program(1);
 		}
 	}
@@ -306,7 +305,7 @@ void process_args(int argc, char **argv){
 
 
 void run(){
-	const int READ_BUFF_SIZE=64,SAVE_BUFF_SIZE=128; 
+	const int READ_BUFF_SIZE=64,SAVE_BUFF_SIZE=128;
 	struct pollfd fds;
     time_t last_temp_read, current_time;
     double elapsed_time;
