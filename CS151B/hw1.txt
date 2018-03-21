@@ -1,0 +1,110 @@
+TODO:
+Problems 1.5, 1.6, 1.7, and 1.13
+
+1.5. Consider three different processors P1, P2, and P3 executing
+the same instruction set. P1 has a 3 GHz clock rate and a CPI of 1.5. P2 has a
+2.5 GHz clock rate and a CPI of 1.0. P3 has a 4.0 GHz clock rate and has a CPI of 2.2.
+a. Which processor has the highest performance expressed in instructions per second?
+
+    Instructions/Second = clocks/second * instructions/clock
+    P1: 3.0 * 10^9 * 1/1.5 = 2.0 * 10^9
+    P2: 2.5 * 10^9 * 1/1.0 = 2.5 * 10^9
+    P3: 4.0 * 10^9 * 1/2.2 = 1.8 * 10^9
+
+    P2 has the highest performance in instructions per second.
+
+b. If the processors each execute a program in 10 seconds, find the number of
+cycles and the number of instructions.
+
+    Number of Cycles = clocks/second  * seconds
+    P1: 3.0 * 10^9 * 10 = 3.0 * 10^10
+    P2: 2.5 * 10^9 * 10 = 2.5 * 10^10
+    P3: 4.0 * 10^9 * 10 = 4.0 * 10^10
+
+    Number of Instructions = Instructions/Second * seconds
+    P1: 2.0 * 10^9 * 10 = 2.0 * 10^10
+    P2: 2.5 * 10^9 * 10 = 2.5 * 10^10
+    P3: 1.8 * 10^9 * 10 = 1.8 * 10^10
+
+c. We are trying to reduce the execution time by 30% but this leads to an increase
+of 20% in the CPI. What clock rate should we have to get this time reduction?
+
+    Clocks/second = SpeedUp * 1.20 * Clocks/Instruction * Instructions/Second
+    P1: 10/7 * 1.2 * 1.5 * 2.0 * 10^9 = 5.1 * 10^9
+    P2: 10/7 * 1.2 * 1.0 * 2.5 * 10^9 = 4.3 * 10^9
+    P3: 10/7 * 1.2 * 2.2 * 1.8 * 10^9 = 6.8 * 10^9
+
+1.6 Consider two different implementations of the same instruction
+set architecture. Th e instructions can be divided into four classes according to
+their CPI (class A, B, C, and D). P1 with a clock rate of 2.5 GHz and CPIs of 1, 2, 3,
+and 3, and P2 with a clock rate of 3 GHz and CPIs of 2, 2, 2, and 2.
+Given a program with a dynamic instruction count of 1.0E6 instructions divided
+into classes as follows: 10% class A, 20% class B, 50% class C, and 20% class D,
+which implementation is faster?
+
+a. What is the global CPI for each implementation?
+    P1: 10% * 1 + 20% * 2 + 50% * 2 + 20% * 3 = 2.6 CPI
+    P2: 10% * 2 + 20% * 2 + 50% * 2 + 20% * 2 = 2.0 CPI
+
+b. Find the clock cycles required in both cases.
+    Clock Cycles = Instructions * Clocks/Instructions
+    P1: 1.0E6 * 2.6 = 2.6E6
+    P2: 1.0E6 * 2.0 = 2.0E6
+
+1.7 Compilers can have a profound impact on the performance
+of an application. Assume that for a program, compiler A results in a dynamic
+instruction count of 1.0E9 and has an execution time of 1.1 s, while compiler B
+results in a dynamic instruction count of 1.2E9 and an execution time of 1.5 s.
+a. Find the average CPI for each program given that the processor has a clock cycle
+time of 1 ns.
+    Clocks/Instruction = clocks/second * seconds/instruction
+    P1: 1/1*10^9 * 1.1 / 1.0E9 = 1.10 CPI
+    P2: 1/1*10^9 * 1.5 / 1.2E9 = 1.25 CPI
+
+b. Assume the compiled programs run on two different processors. If the execution
+times on the two processors are the same, how much faster is the clock of the
+processor running compiler A’s code versus the clock of the processor running
+compiler B’s code?
+    Clocks/Second = Clocks/Instruction * NumberInstructions
+    P1: 1.10 CPI * 1.0E9 = 1.1*10^9
+    P2: 1.25 CPI * 1.2E9 = 1.5*10^9
+
+    P2/P1 = 136.4%
+    P2 is 36% faster.
+
+c. A new compiler is developed that uses only 6.0E8 instructions and has an
+average CPI of 1.1. What is the speedup of using this new compiler versus using
+compiler A or B on the original processor?
+    Clock Cycles  = Clocks/Instruction * Instructions
+    P1 Clock Cycles =  1.10 * 1.0E9 = 1.1E9
+    P2 Clock Cycles =  1.25 * 1.2E9 = 1.5E9
+    New Clock Cycles = 1.10 * 6.0E8 = 6.6E8
+
+    P1/New = 1.65%.
+    P2/New = 2.25%.
+
+1.13 Another pitfall cited in Section 1.10 is expecting to improve the overall
+performance of a computer by improving only one aspect of the computer. Consider
+a computer running a program that requires 250 s, with 70 s spent executing FP
+instructions, 85 s executed L/S instructions, and 40 s spent executing branch
+instructions.
+
+1.13.1 By how much is the total time reduced if the time for FP
+operations is reduced by 20%?
+
+Total Reduction = SpeSeconds/TotalSeconds * Specific Reduction
+Total Reduction = 70/250 * 20% = 5.6%.
+
+1.13.2 By how much is the time for INT operations reduced if the
+total time is reduced by 20%?
+
+Specific Reduction = Total Reduction * TotalSeconds/SpeSeconds
+INT Time = 250 - 70 - 85 - 40 = 85
+Specific Reduction = 20% * 250/85 = 59%
+
+1.13.3 Can the total time can be reduced by 20% by reducing only
+the time for branch instructions?
+No. Branch reductions currently use only 40/250 = 16% of the time.
+Even if branch reductions were reduced to take virtually no time, that's only
+a 16% reduction in total time (all the time which the branch instructions take).
+It cannot reach a reduction of 20%.

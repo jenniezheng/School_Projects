@@ -1,0 +1,62 @@
+After-Action Report
+
+Solution:
+I had a lot of trouble with this homework assignment, so I went to my TA for advice.
+I solved the problem using his suggestion: two functions that recursed onto
+each other. I implemented the parse_prefix function with two subfunctions:
+match_multiple_rules and match_single_rule. The match_multiple_rules
+function found collected all the valid rhs for the nonterminal and then
+tested each one by calling the match_single_rule function
+on each one until it found a valid one. Furthermore, the match_single_rule
+function went through a single rule, checking for correct terminal strings
+and calling match_multiple_rules on nonterminals and either returned None
+when no application of the rule matched or Some with the derivation and
+the fragment when an application of the rule matched.
+
+Why:
+Honestly, the main reason I chose my solution was I was lost about
+where to begin and the TA recommended this kind of solution. Furthermore,
+after thinking about the structure it makes a lot of sense.
+
+Other Approaches:
+I tried to think about how I would solve the problem in
+an imperative language.
+
+Initially, I wondered whether a bottom-up approach would work.
+I wanted to try building up the grammar tree and cutting the parts of the
+tree not within the fragment, until I found the longest section within the
+fragment. I ditched that idea, however, because I wasn't sure how to effectively
+build the tree or create the derivation based on the tree structure.
+
+Then, I starting thinking of completing this with a top-down
+approach. I imagined that I would try to find a match for
+the entire fragment, and then the fragment minus the last part,
+and so on until I found the longest valid solution. Furthermore, for
+each attempt, I would go through the rules and attempt to
+apply each rule to the fragment. For each rule attempt, I wanted
+to check for the right terminals and then recursively check
+for the right nonterminals. Then, if the rule was valid,
+I'll return the derivation and the index of whether in the array
+the rule ended. Else, I'll return something which signaled
+that the rule wasn't valid and I should try another rule.
+My general dea was correct, but I wasn't sure how I could recursively
+check nonterminals. Furthermore, I was confused about what the
+acceptor did and when I should use the acceptor.
+My actual solution was similar to this idea.
+
+Weaknesses:
+My solution is vulnerable to infinite loops. If any nonterminal contains a
+rule that starts with the nonterminal itself, for example, the parse_prefix
+function may enter into an infinite loop if the nonterminal keeps on
+trying to apply itself. For example, the original dyck grammar is the following.
+
+let dyck_grammar =
+  (Expr,
+   function
+    | Expr ->
+         [ [T"(";T")"]; [T"(";N Expr;T")"]; [N Expr; N Expr]
+    | _ -> [])
+
+Whenever the parse_prefix reach the [N Expr; N Expr] rule, it entered an infinite
+loop because it kept on trying to do the  [T"(";N Expr;T")"] and then
+the [N Expr; N Expr] rule. I had to revise the dyck grammar to avoid these loops.

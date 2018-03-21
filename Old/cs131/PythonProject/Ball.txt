@@ -1,0 +1,115 @@
+Ball connected to Holiday
+Ball connected to Holiday
+Ball connected to Holiday
+Ball connected to Holiday
+Ball connected to Welsh
+Data AT Welsh +0.001661 c8f3cd036ac24631a0b4564fb4f8aac1 +34.068930-118.445127 1514270624.414102077
+Received: WHATSAT
+
+Responded: ? WHATSAT
+Received: WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1
+
+Responded: ? WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1
+Received: WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 2
+
+Responded: ? WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 2
+Received: WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 1000 1
+
+Responded: ? WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 1000 1
+Received: WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 1 1000
+
+Responded: ? WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 1 1000
+Received: WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 -10 10
+
+Responded: ? WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 -10 10
+Received: WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 10 -10
+
+Responded: ? WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 10 -10
+Received: WHATSAT hello 10 -10
+
+Responded: ? WHATSAT hello 10 -10
+Received: WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 r 10
+
+Responded: ? WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 r 10
+Received: WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 10 l
+
+Responded: ? WHATSAT c8f3cd036ac24631a0b4564fb4f8aac1 10 l
+Data AT Alford +0.000679 3fc092ac54784c70972b2322a992685e +34.068930-118.445127 1514270624.431516886
+Received: WHATSAT 3fc092ac54784c70972b2322a992685e 1 1
+
+Responded: AT Alford +0.000679 3fc092ac54784c70972b2322a992685e +34.068930-118.445127 1514270624.431516886
+ {
+ "html_attributions": [],
+ "results": [
+  {
+   "geometry": {
+    "location": {
+     "lat": 34.0522342,
+     "lng": -118.2436849
+    },
+    "viewport": {
+     "northeast": {
+      "lat": 34.3373061,
+      "lng": -118.1552891
+     },
+     "southwest": {
+      "lat": 33.7036519,
+      "lng": -118.6681759
+     }
+    }
+   },
+   "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+   "id": "7f7b7d8118ae8db8ed3f541159ac928c484d12ad",
+   "name": "Los Angeles",
+   "photos": [
+    {
+     "height": 2322,
+     "html_attributions": [
+      "<a href=\"https://maps.google.com/maps/contrib/102571719816690763141/photos\">SKY RHEE</a>"
+     ],
+     "photo_reference": "CmRaAAAABFm6kvbjR8kGitXk7tOOQbEHtC_Q-y5VJgzBM0bf9BZeVBbFmCAlgVNOfXr7naK1Nsx0TxF8ssgg666S_EFM1Aqsd7WvVCu8uk8BgyWyHDAvAlFmasAwZllynfQ0XBuvEhB0g4DPAQ9fkUhyxw3cfCOYGhRHY_YRKPWbySzaHsnH5jMlZli-aQ",
+     "width": 4128
+    }
+   ],
+   "place_id": "ChIJE9on3F3HwoAR9AhGJW_fL-I",
+   "reference": "CmRbAAAAuQhfzu0WeoP1WOSOd_8V5EL9WafXdE6r-F_FqzKFXlwpFIGAOh-DxzUoARbvdy8aIvvgPo7XRWnDyGK49Lf-a9pt9saZM2stLRBGbex7AyzeGx8qx_-ZSAk9pnB4dOiKEhAIwIUdBqAVrUZ8C9HN6a75GhQ_yQ3jQCIvgtqqaaTlHikGzCBKnA",
+   "scope": "GOOGLE",
+   "types": [
+    "locality",
+    "political"
+   ],
+   "vicinity": "Los Angeles"
+  }
+ ],
+ "status": "OK"
+}
+Data AT Alford +0.001463 a98d8ec7c4b847f6b5390a45b4a5c9b9 +34.068930-118.445127 1514270625.771708965
+Data AT Holiday +0.001232 04371e306a7f4ce1a05fb00d4dfe7444 +34.068930-118.445127 1514270625.777991056
+Received: LLL
+
+Responded: ? LLL
+Received: IAMTA kiwi +34.068930-118.445127 1479413884.392014450
+
+Responded: ? IAMTA kiwi +34.068930-118.445127 1479413884.392014450
+Received: IAMAT ki wi +34.068930-118.445127 1479413884.392014450
+
+Responded: ? IAMAT ki wi +34.068930-118.445127 1479413884.392014450
+Received: IAMAT kiwi 34.068930-118.445127 1479413884.392014450
+
+Responded: ? IAMAT kiwi 34.068930-118.445127 1479413884.392014450
+Received: IAMAT kiwi -118.445127 1479413884.392014450
+
+Responded: ? IAMAT kiwi -118.445127 1479413884.392014450
+Received: IAMAT kiwi +18.445127 1479413884.392014450
+
+Responded: ? IAMAT kiwi +18.445127 1479413884.392014450
+Received: IAMAT kiwi Los_Angeles 1479413884.392014450
+
+Responded: ? IAMAT kiwi Los_Angeles 1479413884.392014450
+Received: IAMAT ki wi +34.068930-118.445127 NOW
+
+Responded: ? IAMAT ki wi +34.068930-118.445127 NOW
+Received: IAMAT kiwi +34.060000-118.000000 -1479413884.392014450 HELLO
+
+Responded: ? IAMAT kiwi +34.060000-118.000000 -1479413884.392014450 HELLO
+Data AT Hamilton +0.000964 b7c799edf221421bb47c10130bb245cc +34.068930-118.445127 1514270625.808032036

@@ -1,0 +1,14 @@
+Data aa AT Alford +1512203882.457879 aa +34.068930-118.445127 123.392014450
+
+Received: IAMAT aa +34.068930-118.445127 123.392014450
+Responded: AT Alford +1512203882.457879 aa +34.068930-118.445127 123.392014450
+
+Data bb AT Alford +1512203882.488714 bb +34.068930-118.445127 123.392014450
+
+Received: IAMAT bb +34.068930-118.445127 123.392014450
+Responded: AT Alford +1512203882.488714 bb +34.068930-118.445127 123.392014450
+
+Alford failed to give info to Hamilton
+Alford failed to give info to Welsh
+Alford failed to give info to Hamilton
+Alford failed to give info to Welsh

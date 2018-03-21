@@ -1,0 +1,45 @@
+NAME: Yunjing Zheng
+EMAIL: jenniezheng321@gmail.com
+ID: 304806663
+
+
+lab0.c:
+Source code for the program. Program's basic function is to read in from stdin and write out to stdout. It utilizes the getopt_long function
+from the c library in order to incorporate the options --input=[filename], --output-[filename], --segfault, and --catch. The input option
+allows the user to choose a file to be the input file. The output option allows the user to choose a file to be the output file. Furthermore, 
+the segfault option generates a segmentation fault by deferencing a null pointer, and the catch option allows segmentation faults to
+be caught with a signal handler. 
+
+Makefile:
+The Makefile grants the user the options to compile the code, check the executable, clean the directory, and make a distribution. 
+make: compiles the program using gcc with the -g flag. 
+check: quickly checks that executable works correctly. More information later.
+clean: deletes everything except the files named lab0.c, Makefile, breakpoint.png, backtrace.png, and README from the folder 
+dist: creates a new distribution that includes the files named lab0.c, Makefile, breakpoint.png, backtrace.png, and README
+
+breakpoint.png:
+A screenshot of breakpoint creation and examination of the null pointer in gdb. The ptr is pointing to the nullptr because its 
+at memory address 0x0. Attempts to dereference it result in a 
+segmentation fault because the virtual memory address 0x0 is inaccessible. 
+
+backtrace.png:
+A screenshot of the segmentation fault and a backtrace of the segmentation fault in gdb. You can tell that the main function
+called the segfaulter function, and the segfaulter function produced
+the segmentation fault.
+
+README: 
+Overview of the various files in the folder and explanation of my lab0 experience. 
+
+Make check test cases:
+Custom input file check- check for return value of 0;
+Custom input file and custom output file check - check that input and output files are identical and check for return value of 0;
+Incorrect argument check - check for return value of 1;
+Input file error check - check for return value of 2;
+Output file error check - check for return value of 3;
+Segfault with catch check - check for return value of 4;
+
+Note for make clean option in Makefile:
+The directions for make clean were a bit vague, so I interpreted it as delete everything except the original five.
+My make clean option will delete all files other than the five which were originally included the folder,
+so don't place any important files not including those five within the folder if you plan to run make clean. 
+

@@ -1,0 +1,33 @@
+NAME: Yunjing Zheng
+EMAIL: jenniezheng321@gmail.com
+ID: 304806663
+
+===============================CONTENTS===============================
+Makefile:
+	The makefile has the following targets.
+	default: builds lab4b
+	clean: rid the directory of everything except the source files, README, and the Makefile.
+	dist: creates a tar distribution of the files needed for submission
+	check: runs a brief smoke check of lab4b
+
+README:
+	Explains the contents of the distribution as 
+	well as my experience with the lab.
+
+Lab4b.c:
+	Source code to build lab4b. Lab4b is a program that runs on the Intel Edison. 
+	It assumes that a button component is attached to D3 and that a temperature 
+	sensor is attached to A0. Using the components, it reports the temperature
+	after every period of time. If the button is pressed, the program exits. 
+	Furthermore, while the program runs, it is able to read and process a number of 
+	commands through standard input. These commands include SCALE=[C/F] to determine 
+	whether it reports in Farenheits or Celcius, PERIOD=[NUMBER OF SECONDS] to determine what interval it reports
+	at, STOP to stop the reporting, START to restart the reporting, and OFF to shut the program 
+	off. 
+	Furthermore, the user can pass arguments into the command to determine how it starts. 
+	The program recognizes the following arguments:
+		--scale=[SCALE_TYPE]	optional argument to change scale type to farenheit (F) or celcius (C)
+		--period=[SECONDS]	optional argument to adjust wait time in seconds
+		--log=[FILENAME]	optional argument to log temperature reports as well as commands to specified file
+	***NOTE: The arguments to the program should be lowercase and the commands to the program should be uppercase.
+	This can be confusing because the arguments and commands are very similar. 

@@ -1,0 +1,34 @@
+NAME: Yunjing Zheng
+EMAIL: jenniezheng321@gmail.com
+ID: 304806663
+
+=======================WIFI and SERIAL NUMBER======================
+Wifi Mac Address: fc:db:b3:95:ef:79
+Serial number: FZEDA617D01SFA501
+
+
+==============================CONTENTS=============================
+README: 
+	Explains my experience with the intel edison kit.
+Eidison_Kit.jpg: 
+	A picture of me holding my assembled Edison board. You can 
+see the Edison chip as well as the USB power and USB cables plugged
+into the board.
+Git.png:
+	A screenshot of me cloning my Projects repository into the edison.
+Then I cd into the repository and list the one file in the repository, 
+README.md. Not shown is how before this, I installed git with opkg.
+Hello_World.png:
+	A screenshot of me using ssh to enter my Edison over wifi. 
+Then I compile hello.c using gcc, and then run the program a.out which 
+outputs "Hello World"
+Scp.png: 
+	A screenshot of me copying hello.c from ~/transfer/hello.c on my
+laptop into ~/Jennie/ on my edison board.
+Wifi.png:
+	A screenshipt of me setting up my wifi by selecting Alpacament and
+then entering the password for it. Then I use ifconfig to list my MAC address
+and IP address. Not shown is how, before this, I ran configure_edison --setup
+to create a name and password for my edison board.
+
+

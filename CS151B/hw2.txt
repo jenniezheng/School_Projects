@@ -1,0 +1,74 @@
+Problems 2.24, 2.26.1, 2.26.3, and 2.46.1
+
+2.24 [5] <§2.7> Suppose the program counter (PC) is set to 0x2000 0000 . Is it
+possible to use the jump (j) MIPS assembly instruction to set the PC to the address
+as 0x4000 0000?
+
+    No - The jump target is just 26 bits long. After getting left shifted by 2, it's still 28 bits long. It cannot jump to 0x4000 0000, which needs 4*7+3 = 31 bits.
+
+Is it possible to use the branch-on-equal (beq) MIPS assembly
+instruction to set the PC to this same address?
+
+    No. The beq instruction is only capable of branching according to an offset * 4. Since this offset is just 16 bits long, and multiplied by 4, it's still just 18 bits long, it cannot jump a 29 bit gap to go from 0x2000 0000 to 0x4000 0000.
+
+2.26.1 [5] <§2.7> Assume that the register $t1 is initialized to the value 10. What
+is the value in register $s2 assuming $s2 is initially zero?
+
+Translation:
+LOOP:
+    $t2 = (0 < $t1) ? 1 : 0;
+    if $t2 == 0 goto DONE
+    $t1 -= 1
+    $s2 +=2
+    goto LOOP
+DONE
+
+
+Basically, the code continuously decrements $t1 by 1 and increments $s2 by 2 until $t1 is less than 0.
+
+If $t1 is initialized to 10, then the loop will be processed 10 times and $s2 will be incremented by 2 for 10 times. This means if $s2 starts at 0, it will end at 0 + 2 * 10 = 20.
+
+
+2.26.3 [5] <§2.7> For the loops written in MIPS assembly above, assume that the register $t1 is initialized to the value N. How many MIPS instructions are executed?
+
+Basically, the code continuously decrements $t1 by 1 until $t1 is less than 0.
+
+If $t1 is initialized to N, $t1 will be decremented N times. Furthermore, each decrement takes 5 instructions. Thus, 5*N MIPS instructions will be executed.
+
+
+2.46.1 [5] <§2.19> Suppose that new, more powerful arithmetic instructions are
+added to the instruction set. On average, through the use of these more powerful
+arithmetic instructions, we can reduce the number of arithmetic instructions
+needed to execute a program by 25%, and the cost of increasing the clock cycle
+time by only 10%. Is this a good design choice? Why?
+
+CCT = clock cycle time
+ICa = instruction count arithmetic
+ICls = instruction count load/store
+ICb = instruction count branch
+
+old CPU time = oldCCT
+    * (oldICa * CPIa
+    + oldICls*CPIls
+    + oldICb*CPIb)
+
+    = oldCCT
+    * (500 * 1
+    + 300 * 10
+    + 100 * 3)
+
+    = 3800 * oldCCT
+
+new CPU time = (1.1 * oldCCT)
+    * (0.75 * oldICa * CPIa
+    + oldICls*CPIls
+    + oldICb*CPIb)
+
+    = (1.1 * oldCCT)
+    * (0.75 * 500 * 1
+    + 300 * 10
+    + 100 * 3)
+
+    = 4042.5 * oldCCT
+
+No it's not a good design choice. The extra clock cycle time adds enough to the new CPU time that the new CPU time is slower than the old CPU time.

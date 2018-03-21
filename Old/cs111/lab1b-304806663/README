@@ -1,0 +1,58 @@
+NAME: Yunjing Zheng
+EMAIL: jenniezheng321@gmail.com
+ID: 304806663
+
+===============================CONTENTS OVERVIEW===============================
+README - explains the contents of the tarball and my experience coding project 1B.
+Makefile - a makefile with options to clean, build distribution, compile source files, and run executables. 
+lab1b-client.c - client source file which compiles to lab1b-client
+lab1b-server.c - server source file which compiles to lab1b-server
+my.key - a simple encryption key for the encryption of the two source files
+
+============================PROGRAM DESCRIPTION================================
+The program's basic function is to allow a client to communicate through TCP 
+to a server which is piped to a bash subshell. 
+
+lab1b-client.c: This source code describes the client's noncanonical, no-echo terminal. 
+It connects the client to the server using socket API. The client reads from both the keyboard 
+and the server by polling on the two relevant file descriptors. The input from the 
+keyboard is sent to the server and standard output, and the input from the server
+is sent to standard output. The lab supports the following arguments:
+--port=PORT_NUMBER 		:a mandatory argument. The client must use the same port number as the server.
+--log=FILE_NAME			:an optional argument to record data sent and recieved into a file
+--encryption=KEY_FILE	:an optional argument to encrypt messages using a given key. Note: server and client must use the same key
+--host=HOST_NAME		:an optional argument to change the host from lnxsrv09 to another host
+--debug					:an optional argument to print debug statements
+
+lab1b-server.c: This source code describes the server's terminal. 
+It communicates to the client by using socket API and binding to the client. 
+The server passes information between the client and the bash shell which is the
+server's child program. Like the client, the server also reads from two different
+file descriptions using polling api. The server supports the following options:
+--port=PORT_NUMBER 		:a mandatory argument. The server must use the same port number as the client.
+--encryption=KEY_FILE	:an optional argument to encrypt messages using a given key. Note: server and client must use the same key
+--debug					:an optional argument to print debug statements
+
+
+===============================MAKEFILE========================================
+The Makefile allows for convenient cleaning, building of distribution, compiling of source files, and running of executable. 
+default: builds the executable with -g
+clean: with remove everything except the orignal three files from the directory
+dist: creates a distribution containing the Makefile, C source code, and README
+check: runs the executable with --debug and --shell options 
+
+default: builds both lab1b-client and lab1b-server executables with -g and -lmcrypt flags 
+server: builds lab1b-server using -g and -lmcrypt flags 
+client: builds lab1b-client using -g and -lmcrypt flags 
+clean: cleans folder by moving all the original five files to a backup directory in tmp, removing
+	everything from current directory, and moving the backup files back to current directory. 
+dist: creates a tarball which includes the README, Makefile, my.key, lab1b-client.c, and lab1b-server.c.
+checkclient: executes client executable with options --port=$(PORT) --encrypt=$(KEY_FILE) --host=localhost --log=$(LOG_FILE) --debug
+checkserver: executes server executable with options --port=$(PORT) --encrypt=$(KEY_FILE) #--debug 
+checkboth: executes both executables using & with options for server: --port=$(PORT) --encrypt=$(KEY_FILE) --debug
+	and for client: --port=$(PORT) --encrypt=$(KEY_FILE) --host=localhost --log=$(LOG_FILE) --debug
+
+===============================my.key========================================
+A very simple key used for libmcrypt's encryption algorithm. The encryption
+utilizes the ofb mode and the blowfish algorithm.
+

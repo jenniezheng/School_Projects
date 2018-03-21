@@ -1,0 +1,24 @@
+NAME: Yunjing Zheng,Kunjan Patel
+EMAIL: jenniezheng321@gmail.com,kunjan@ucla.edu
+ID: 304806663,904563044
+
+===================================Included Files===================================
+README:
+	This file contains the description of the lab.
+	 
+lab3b
+	This python program reads in a csv file which describes the information inside of a file system. 
+	Then the program checks for numerous types of inconsistencies between the block, inode, and directory entry
+	information within the csv file. It outputs three types of errors:
+		Block Consistency Errors
+		I-node Allocation Errors
+		Directory Consistency Errors
+
+
+Makefile:
+	This Makefile includes three targets.
+	default: does nothing because python doesn't need to be compiled
+	dist: creates distribution tarball with above files
+	clean: restores to initial untarred version
+
+

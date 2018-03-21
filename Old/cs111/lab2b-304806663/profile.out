@@ -1,0 +1,44 @@
+ROUTINE ====================== lock in /u/cs/ugrad/yunjing/lab2/utilities.c
+   900    901 Total samples (flat / cumulative)
+     .      .   14: extern char* SYNC_TYPE;
+     .      .   15: extern int* SPIN_LOCK;
+     .      .   16: extern pthread_mutex_t* MUTEX;
+     .      .   17: 
+     .      .   18: //returns wait time
+---
+     .      .   19: long long lock(int num){
+     .      .   20: 	if(strcmp(SYNC_TYPE,"none")==0)return 0;
+     .      .   21: 	struct timespec start_time;
+     .      1   22: 	start_timer(&start_time);
+     .      .   23: 	if(strcmp(SYNC_TYPE,"m")==0) pthread_mutex_lock(MUTEX+num);
+   900    900   24: 	else if(strcmp(SYNC_TYPE,"s")==0) while(__sync_lock_test_and_set(SPIN_LOCK+num, 1));
+     .      .   25: 	return end_timer(&start_time);
+     .      .   26: }
+---
+     .      .   27: 
+     .      .   28: void unlock(int num){
+     .      .   29: 	if (strcmp(SYNC_TYPE,"s")==0) __sync_lock_release(SPIN_LOCK+num);
+     .      .   30: 	else if(strcmp(SYNC_TYPE,"m")==0) pthread_mutex_unlock(MUTEX+num);
+     .      .   31: }
+ROUTINE ====================== lock in /u/cs/ugrad/yunjing/lab2/utilities.c
+   900    901 Total samples (flat / cumulative)
+     .      .   14: extern char* SYNC_TYPE;
+     .      .   15: extern int* SPIN_LOCK;
+     .      .   16: extern pthread_mutex_t* MUTEX;
+     .      .   17: 
+     .      .   18: //returns wait time
+---
+     .      .   19: long long lock(int num){
+     .      .   20: 	if(strcmp(SYNC_TYPE,"none")==0)return 0;
+     .      .   21: 	struct timespec start_time;
+     .      1   22: 	start_timer(&start_time);
+     .      .   23: 	if(strcmp(SYNC_TYPE,"m")==0) pthread_mutex_lock(MUTEX+num);
+   900    900   24: 	else if(strcmp(SYNC_TYPE,"s")==0) while(__sync_lock_test_and_set(SPIN_LOCK+num, 1));
+     .      .   25: 	return end_timer(&start_time);
+     .      .   26: }
+---
+     .      .   27: 
+     .      .   28: void unlock(int num){
+     .      .   29: 	if (strcmp(SYNC_TYPE,"s")==0) __sync_lock_release(SPIN_LOCK+num);
+     .      .   30: 	else if(strcmp(SYNC_TYPE,"m")==0) pthread_mutex_unlock(MUTEX+num);
+     .      .   31: }

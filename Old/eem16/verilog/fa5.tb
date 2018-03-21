@@ -1,0 +1,79 @@
+//--------------------------------------------------------------------
+//      Timescale
+//      Means that if you do #1 in the initial block of your
+//      testbench, time is advanced by 1ns instead of 1ps
+//--------------------------------------------------------------------
+`timescale 1ns / 1ps
+
+//--------------------------------------------------------------------
+//      Design Assign #1, Problem #1 Testbench.
+//--------------------------------------------------------------------
+module dassign1_1_tb();
+
+//----------------------------------------------------------------
+//      Signal Declarations
+//----------------------------------------------------------------
+reg     a, b, c, d, e, f, g;
+wire [2:0]  y1;
+reg  [2:0]  z1;
+
+reg  [3:0]  in1, in2, in3, in4, in5;
+wire [6:0]  y2;
+reg  [6:0]  z2;
+
+integer     i;
+integer     fa5_err, adder5_err;
+
+//----------------------------------------------------------------
+//      Instantiate modules Module
+//----------------------------------------------------------------
+fa5         fa5_1(a, b, c, d, e, f, g, y1[2], y1[1], y1[0]);
+adder5      adder5_1(in1, in2, in3, in4, in5, y2);
+
+//----------------------------------------------------------------
+//      Test Stimulus
+//----------------------------------------------------------------
+initial begin
+    fa5_err=0;
+    adder5_err=0;
+
+    $dumpfile("dassign1_1_timing.vcd");
+    $dumpvars;
+
+    for(i=16'b0; i<127; i=i+1) begin
+        a=i[0]; b=i[1]; c=i[2]; d=i[3]; e=i[4]; f=i[5]; g=i[6];
+        in1 = $urandom;
+        in2 = $urandom;
+        in3 = $urandom;
+        in4 = $urandom;
+        in5 = $urandom;
+
+        //z are correct outputs
+        #2
+        z1 = a+b+c+d+e+f+g;
+        z2 = in1 + in2 + in3 + in4 + in5;
+
+        #40
+        if(y1 !== z1) begin
+            $display ("a=%b b=%b c=%b d=%b e=%b f=%b g=%b func=%b correct=%b i=%b",
+                a,b,c,d,e,f,g,y1,z1,i);
+            fa5_err=fa5_err+1;
+        end
+        if(y2 !== z2) begin
+            $display ("in1=%b in2=%b in3=%b in4=%b in5=%b func=%b correct=%b i=%b",
+                in1, in2, in3, in4, in5, y2, z2, i);
+            adder5_err=adder5_err+1;
+        end
+      end
+
+    if(!fa5_err)
+        $display("ASSERTION PASSED CHECK fa5");
+    else
+        $display("ASSERTION FAILED CHECK fa5 WITH ERRNO %d\n",fa5_err);
+
+    if(!adder5_err)
+        $display("ASSERTION PASSED CHECK adder5");
+    else
+        $display("ASSERTION FAILED CHECK adder5 WITH ERRNO %d\n",adder5_err);
+end
+endmodule

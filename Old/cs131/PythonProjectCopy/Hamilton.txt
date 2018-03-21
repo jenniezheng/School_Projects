@@ -1,0 +1,10 @@
+Data dd AT Hamilton +1512203882.425666 dd +34.068930-118.445127 123.392014450
+
+Received: IAMAT dd +34.068930-118.445127 123.392014450
+Responded: AT Hamilton +1512203882.425666 dd +34.068930-118.445127 123.392014450
+
+Hamilton failed to give info to Holiday
+Hamilton failed to give info to Alford
+Hamilton connected to Holiday
+Hamilton connected to Holiday
+Hamilton connected to Holiday
