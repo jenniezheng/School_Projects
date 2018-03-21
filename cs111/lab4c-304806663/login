@@ -1,2 +1,0 @@
-sudo screen /dev/ttyUSB0 115200
-#enter user: name, password: password

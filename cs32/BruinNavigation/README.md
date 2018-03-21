@@ -1,1 +1,0 @@
-A* Navigation System for Locations near UCLA
